@@ -1,7 +1,7 @@
 import org.gradle.api.JavaVersion
 
 object ApplicationConfig {
-    val namespace = "org.alexcawl.newsnotepadapplication"
+    val namespace = "org.alexcawl.memorize"
     val compileSdk = 33
     val applicationId = namespace
     val minSdk = 26

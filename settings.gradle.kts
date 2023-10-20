@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "MemorizeApplication"
 include(":app")
+include(":core:network")
+include(":core:ui")
+include(":core:di")
+include(":core:persistence")

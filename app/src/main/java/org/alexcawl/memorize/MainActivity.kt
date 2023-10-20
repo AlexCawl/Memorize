@@ -2,7 +2,6 @@ package org.alexcawl.memorize
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import org.alexcawl.newsnotepadapplication.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlinx-serialization")
 
-    // Kotlin Ksp [Room]
+    // Kotlin Ksp
     id("com.google.devtools.ksp")
 }
 
@@ -13,17 +13,23 @@ android {
     compileSdk = ApplicationConfig.compileSdk
     namespace = ApplicationConfig.namespace
     buildToolsVersion = ApplicationConfig.buildToolsVersion
+
     defaultConfig {
         minSdk = ApplicationConfig.minSdk
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
+        }
+
+        release {
+            isMinifyEnabled = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }

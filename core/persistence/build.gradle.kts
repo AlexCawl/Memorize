@@ -1,5 +1,5 @@
 plugins {
-    id("feature-module-setup")
+    id("android-storage-setup")
 }
 
 android {

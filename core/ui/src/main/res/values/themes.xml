@@ -29,5 +29,9 @@
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
 
-    <style name="Theme.Memorize" parent="Base.Theme.Memorize" />
+    <style name="Theme.Memorize" parent="Base.Theme.Memorize">
+        <item name="windowActionBarOverlay">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

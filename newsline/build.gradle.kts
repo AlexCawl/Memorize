@@ -1,5 +1,6 @@
 plugins {
     id("feature-module-setup")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {

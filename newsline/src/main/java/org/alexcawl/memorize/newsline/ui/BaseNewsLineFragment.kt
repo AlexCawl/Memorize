@@ -1,4 +1,4 @@
-package org.alexcawl.memorize.newsline
+package org.alexcawl.memorize.newsline.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

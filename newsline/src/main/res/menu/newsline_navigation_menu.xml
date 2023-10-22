@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/all_news"
+        android:enabled="true"
+        android:icon="@drawable/baseline_newspaper_24"
+        android:title="@string/all" />
+    <item
+        android:id="@+id/saved_news"
+        android:enabled="true"
+        android:icon="@drawable/baseline_bookmarks_24"
+        android:title="@string/saved" />
+    <item
+        android:id="@+id/search_news"
+        android:enabled="true"
+        android:icon="@drawable/baseline_search_24"
+        android:title="@string/search" />
+</menu>

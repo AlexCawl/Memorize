@@ -1,3 +1,9 @@
 <resources>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="news">News</string>
+    <string name="your_account">Your account</string>
+    <string name="specify_tag">Specify tag</string>
+    <string name="all">All</string>
+    <string name="saved">Saved</string>
+    <string name="search">Search</string>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Button" />
+
+    <style name="Button.Tonal.OnlyIcon" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="android:inset">0dp</item>
+<!--        <item name="background">@drawable/sheet_with_low_rounded_corners</item>-->
+        <item name="backgroundTint">@drawable/sheet_with_low_rounded_corners</item>
+        <item name="iconTint">?attr/colorOnPrimary</item>
+    </style>
+</resources>

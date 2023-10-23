@@ -30,8 +30,17 @@ abstract class BaseNewsLineFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupView()
+        setupState()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
+    abstract fun setupView()
+
+    abstract fun setupState()
 }

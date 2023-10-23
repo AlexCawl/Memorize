@@ -1,21 +1,41 @@
 package org.alexcawl.memorize.newsline.ui
 
-import android.os.Bundle
-import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
-import org.alexcawl.memorize.network.Ktor
-import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
-import org.alexcawl.memorize.network.datasource.NewsArticleDataSource
 
 class CurrentNewsLineFragment : BaseNewsLineFragment() {
-    private val source: INewsArticleDataSource = NewsArticleDataSource(Ktor.client)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    private val model: CurrentNewsViewModel by viewModels()
+
+    override fun setupView() {
+        title.text = "Israel"
+
+    }
+
+    override fun setupState() {
+        val articleAdapter = ArticleAdapter()
+        with(news) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = articleAdapter
+        }
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                source.getTopHeadlines("Israel")
+                model.state.collect { state ->
+                    when (state) {
+                        is NewsState.Initial -> {
+                            articleAdapter.submitList(listOf())
+                        }
+
+                        is NewsState.Successful -> {
+                            articleAdapter.submitList(state.articles)
+                        }
+
+                        is NewsState.Fail -> TODO()
+                    }
+                }
             }
         }
     }

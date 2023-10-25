@@ -3,14 +3,17 @@ package org.alexcawl.memorize
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
+import org.alexcawl.memorize.di.ViewModelModule
 import org.alexcawl.memorize.network.NetworkModule
+import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.newsline.NewsLineDependencies
 import javax.inject.Singleton
 
-@Component(modules = [ApplicationModule::class, NetworkModule::class])
+@Component(modules = [ApplicationModule::class, ViewModelModule::class, NetworkModule::class])
 @Singleton
 interface ApplicationComponent : NewsLineDependencies {
     override val context: Context
+    override val newsArticleSource: INewsArticleDataSource
 
     @Component.Builder
     interface Builder {

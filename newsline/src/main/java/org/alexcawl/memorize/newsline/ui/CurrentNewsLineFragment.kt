@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
 
 class CurrentNewsLineFragment : BaseNewsLineFragment() {
-    private val model: CurrentNewsViewModel by viewModels()
+    private val model: CurrentNewsViewModel by viewModels { factory }
 
     override fun setupView() {
         title.text = "Israel"
-
     }
 
     override fun setupState() {

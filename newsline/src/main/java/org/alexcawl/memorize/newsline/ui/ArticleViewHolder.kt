@@ -14,8 +14,8 @@ class ArticleViewHolder(
 
         binding.articleImage.load(article.urlToImage ?: "") {
             crossfade(true)
-            placeholder(org.alexcawl.memorize.core.ui.R.drawable.baseline_newspaper_24)
-            error(org.alexcawl.memorize.core.ui.R.drawable.baseline_newspaper_24)
+            placeholder(org.alexcawl.memorize.ui.R.drawable.baseline_newspaper_24)
+            error(org.alexcawl.memorize.ui.R.drawable.baseline_newspaper_24)
         }
     }
 }

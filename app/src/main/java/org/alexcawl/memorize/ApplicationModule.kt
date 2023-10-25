@@ -1,9 +1,7 @@
 package org.alexcawl.memorize
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
 import coil.ImageLoader
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -17,8 +15,4 @@ interface ApplicationModule {
             .crossfade(true)
             .build()
     }
-
-    @Binds
-    @Singleton
-    fun bindFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }

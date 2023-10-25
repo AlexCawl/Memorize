@@ -9,8 +9,9 @@ import org.alexcawl.memorize.network.NetworkConfiguration
 import org.alexcawl.memorize.network.dto.Category
 import org.alexcawl.memorize.network.dto.Country
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
+import javax.inject.Inject
 
-class NewsArticleDataSource(
+class NewsArticleDataSource @Inject constructor(
     private val client: HttpClient
 ) : INewsArticleDataSource {
     private companion object {

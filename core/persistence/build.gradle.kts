@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "core.persistence".asModuleName()
+    namespace = "persistence".asModuleName()
 }

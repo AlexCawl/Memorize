@@ -20,6 +20,14 @@ dependencies {
 
     // Testing
     testImplementation(ApplicationDeps.Test.junit)
+    androidTestImplementation(ApplicationDeps.Test.androidJunit)
+
+    // Android
+    implementation(ApplicationDeps.Android.coreKtx)
+    implementation(ApplicationDeps.Android.viewModel)
+    implementation(ApplicationDeps.Android.fragment)
+    implementation(ApplicationDeps.Android.runtime)
+    implementation(ApplicationDeps.Android.lifecycleExtensions)
 }
 
 android {

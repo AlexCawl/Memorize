@@ -3,7 +3,7 @@ package org.alexcawl.memorize.newsline
 import dagger.Component
 import org.alexcawl.memorize.newsline.ui.BaseNewsLineFragment
 
-@Component(dependencies = [NewsLineDependencies::class])
+@Component(dependencies = [NewsLineDependencies::class], modules = [NewsLineViewModelModule::class])
 @NewsLineScope
 interface NewsLineComponent {
     @Component.Builder

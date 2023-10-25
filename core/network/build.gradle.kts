@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "core.network".asModuleName()
+    namespace = "network".asModuleName()
 }

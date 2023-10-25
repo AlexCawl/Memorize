@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "core.ui".asModuleName()
+    namespace = "ui".asModuleName()
 }

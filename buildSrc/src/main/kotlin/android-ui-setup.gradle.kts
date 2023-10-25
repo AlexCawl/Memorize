@@ -4,14 +4,9 @@ plugins {
 
 dependencies {
     // Android
-    implementation(ApplicationDeps.Android.coreKtx)
     implementation(ApplicationDeps.Android.appcompat)
     implementation(ApplicationDeps.Android.material)
     implementation(ApplicationDeps.Android.constraint)
-    implementation(ApplicationDeps.Android.fragment)
-    implementation(ApplicationDeps.Android.viewModel)
-    implementation(ApplicationDeps.Android.runtime)
-    implementation(ApplicationDeps.Android.lifecycleExtensions)
 
     // Navigation
     implementation(ApplicationDeps.Navigation.ui)
@@ -21,7 +16,6 @@ dependencies {
     implementation(ApplicationDeps.Utils.coil)
 
     // Testing
-    androidTestImplementation(ApplicationDeps.Test.androidJunit)
     androidTestImplementation(ApplicationDeps.Test.espresso)
 }
 

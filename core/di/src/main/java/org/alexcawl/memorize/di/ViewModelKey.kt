@@ -1,4 +1,4 @@
-package org.alexcawl.memorize
+package org.alexcawl.memorize.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

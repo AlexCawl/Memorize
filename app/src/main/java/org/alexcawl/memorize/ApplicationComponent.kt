@@ -7,7 +7,7 @@ import org.alexcawl.memorize.network.NetworkModule
 import org.alexcawl.memorize.newsline.NewsLineDependencies
 import javax.inject.Singleton
 
-@Component(modules = [NetworkModule::class])
+@Component(modules = [ApplicationModule::class, NetworkModule::class])
 @Singleton
 interface ApplicationComponent : NewsLineDependencies {
     override val context: Context

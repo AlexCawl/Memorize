@@ -8,6 +8,14 @@
 - Network via Ktor-client
 - Room database
 
+## Features
+
+- Adaptive news feed
+- Article reader
+- News feed from subscribed sources
+- Save the most important articles in the memory. Compare topics and track news history.
+- Search news by prompt, tags, sources
+
 ## References
 
 ### Dribbble - News App by Daniel Nefedov

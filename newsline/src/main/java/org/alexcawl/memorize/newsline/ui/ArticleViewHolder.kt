@@ -2,6 +2,7 @@ package org.alexcawl.memorize.newsline.ui
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import coil.load
+import coil.size.Scale
 import org.alexcawl.memorize.newsline.databinding.LayoutArticleBinding
 import org.alexcawl.memorize.newsline.domain.Article
 
@@ -16,6 +17,7 @@ class ArticleViewHolder(
             crossfade(true)
             placeholder(org.alexcawl.memorize.ui.R.drawable.baseline_newspaper_24)
             error(org.alexcawl.memorize.ui.R.drawable.baseline_newspaper_24)
+            scale(Scale.FILL)
         }
     }
 }

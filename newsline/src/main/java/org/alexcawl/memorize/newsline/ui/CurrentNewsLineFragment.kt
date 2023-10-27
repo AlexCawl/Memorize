@@ -4,9 +4,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
+import org.alexcawl.memorize.newsline.R
 
 class CurrentNewsLineFragment : BaseNewsLineFragment() {
     private val model: CurrentNewsViewModel by viewModels { factory }
@@ -21,10 +21,7 @@ class CurrentNewsLineFragment : BaseNewsLineFragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = articleAdapter
             addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(),
-                    LinearLayoutManager.HORIZONTAL
-                )
+                MarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
             )
         }
         viewLifecycleOwner.lifecycleScope.launch {

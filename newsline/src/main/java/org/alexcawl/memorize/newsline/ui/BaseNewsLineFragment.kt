@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -13,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
-import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
 import org.alexcawl.memorize.newsline.databinding.FragmentNewsLineBinding
+import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
 import javax.inject.Inject
 
 abstract class BaseNewsLineFragment : Fragment() {
@@ -25,7 +24,6 @@ abstract class BaseNewsLineFragment : Fragment() {
     protected val iconProfile: ImageView by lazy { binding.profileIcon }
     protected val bottomBar: BottomNavigationView by lazy { binding.bottomNavigation }
     protected val news: RecyclerView by lazy { binding.news }
-    protected val addTagButton: Button by lazy { binding.addTag }
     protected val tags: RecyclerView by lazy { binding.newsTagsSelected }
 
     @Inject

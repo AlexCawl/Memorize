@@ -9,7 +9,9 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="@drawable/sheet_with_bottom_rounded_corners"
+        android:background="@drawable/surface_with_medium_rounded_corners"
+        android:backgroundTint="?attr/colorPrimary"
+        android:elevation="8dp"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -21,7 +23,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@drawable/sheet_with_bottom_rounded_corners"
+                android:background="?attr/colorPrimary"
                 android:elevation="8dp"
                 app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin">
@@ -55,7 +57,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/baseline_account_circle_24"
-                        app:tint="?attr/colorOnSecondary" />
+                        app:tint="?attr/colorPrimaryInverse" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.appbar.MaterialToolbar>
 
@@ -63,37 +65,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="bottom|center_horizontal"
-                android:layout_margin="16dp"
+                android:layout_marginBottom="16dp"
                 app:layout_collapseMode="none">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/add_tag"
-                    style="?attr/materialIconButtonFilledTonalStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="?attr/colorSecondary"
-                    android:contentDescription="@string/specify_tag"
-                    app:icon="@drawable/baseline_add_24"
-                    app:iconTint="?attr/colorOnPrimary"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/news_tags_selected"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/add_tag"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -8,6 +8,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":newsline:di"))
     implementation(project(":core:di"))
     implementation(project(":core:network"))
     implementation(project(":core:ui"))

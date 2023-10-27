@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
-import org.alexcawl.memorize.newsline.NewsLineDependenciesStore
+import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
 import org.alexcawl.memorize.newsline.databinding.FragmentNewsLineBinding
 import javax.inject.Inject
 

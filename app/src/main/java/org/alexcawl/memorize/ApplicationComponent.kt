@@ -6,7 +6,7 @@ import dagger.Component
 import org.alexcawl.memorize.di.ViewModelModule
 import org.alexcawl.memorize.network.NetworkModule
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
-import org.alexcawl.memorize.newsline.NewsLineDependencies
+import org.alexcawl.memorize.newsline.di.NewsLineDependencies
 import javax.inject.Singleton
 
 @Component(modules = [ApplicationModule::class, ViewModelModule::class, NetworkModule::class])

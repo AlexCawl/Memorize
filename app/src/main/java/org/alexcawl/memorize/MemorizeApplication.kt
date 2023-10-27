@@ -3,7 +3,7 @@ package org.alexcawl.memorize
 import android.app.Application
 import coil.ImageLoader
 import coil.ImageLoaderFactory
-import org.alexcawl.memorize.newsline.NewsLineDependenciesStore
+import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
 
 class MemorizeApplication : Application(), ImageLoaderFactory {
     private val applicationComponent: ApplicationComponent by lazy {

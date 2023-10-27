@@ -1,4 +1,4 @@
-package org.alexcawl.memorize.newsline
+package org.alexcawl.memorize.newsline.di
 
 interface NewsLineDependenciesProvider {
     val dependencies: NewsLineDependencies

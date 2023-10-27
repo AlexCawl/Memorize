@@ -9,7 +9,7 @@ import org.alexcawl.memorize.di.ViewModelModule
 import org.alexcawl.memorize.newsline.ui.CurrentNewsViewModel
 
 @Module(includes = [ViewModelModule::class])
-internal interface NewsLineViewModelModule {
+internal interface NewsLineModule {
     @Binds
     @IntoMap
     @ViewModelKey(CurrentNewsViewModel::class)

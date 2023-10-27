@@ -1,11 +1,12 @@
 plugins {
-    id("application-module-setup")
+    id("android-setup")
+}
+
+android {
+    namespace = "newsline.di".asModuleName()
 }
 
 dependencies {
-    implementation(project(":newsline"))
-    implementation(project(":newsline:di"))
-
     implementation(project(":core:di"))
     implementation(project(":core:network"))
     implementation(project(":core:ui"))

@@ -1,4 +1,4 @@
-package org.alexcawl.memorize.ui.util
+package org.alexcawl.memorize.ui
 
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment

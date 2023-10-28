@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/all_news"
+        android:id="@+id/current_news"
         android:enabled="true"
         android:icon="@drawable/baseline_newspaper_24"
         android:title="@string/all" />

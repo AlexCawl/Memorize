@@ -1,19 +1,15 @@
 package org.alexcawl.memorize
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import org.alexcawl.memorize.newsline.ui.CurrentNewsLineFragment
-import org.alexcawl.memorize.ui.util.replace
+import androidx.appcompat.app.AppCompatActivity
+import org.alexcawl.memorize.newsline.ui.NewsFragment
+import org.alexcawl.memorize.ui.replace
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // TODO set previous fragment
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container_view, CurrentNewsLineFragment::class.java)
-            .commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_view, NewsFragment::class.java).commit()
     }
 }

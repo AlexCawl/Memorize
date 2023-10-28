@@ -1,5 +1,5 @@
 <resources>
-    <string name="news">News</string>
+    <string name="current_news">Current news</string>
     <string name="your_account">Your account</string>
     <string name="specify_tag">Specify tag</string>
     <string name="all">All</string>

@@ -1,4 +1,4 @@
-package org.alexcawl.memorize.newsline.ui
+package org.alexcawl.memorize.newsline.ui.current
 
 import android.content.Context
 import android.os.Bundle
@@ -19,6 +19,10 @@ import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentCurrentNewsBinding
 import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
+import org.alexcawl.memorize.newsline.ui.ArticleAdapterDelegate
+import org.alexcawl.memorize.newsline.ui.MarginItemDecorator
+import org.alexcawl.memorize.newsline.ui.NewsState
+import org.alexcawl.memorize.ui.CompositeAdapter
 import org.alexcawl.memorize.ui.StatefulFragment
 import javax.inject.Inject
 
@@ -48,15 +52,15 @@ class CurrentNewsFragment : StatefulFragment() {
         return binding.root
     }
 
-    override fun setupBindings() {
-        title.text = "Israel"
-    }
+    override fun setupBindings() = Unit
 
     override fun setupState() {
-        val articleAdapter = ArticleAdapter()
+        val newsAdapter = CompositeAdapter.Builder()
+            .add(ArticleAdapterDelegate())
+            .build()
         with(news) {
             layoutManager = LinearLayoutManager(context)
-            adapter = articleAdapter
+            adapter = newsAdapter
             addItemDecoration(
                 MarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
             )
@@ -65,8 +69,8 @@ class CurrentNewsFragment : StatefulFragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 model.state.collect { state ->
                     when (state) {
-                        is NewsState.Initial -> articleAdapter.submitList(listOf())
-                        is NewsState.Successful -> articleAdapter.submitList(state.articles)
+                        is NewsState.Initial -> newsAdapter.submitList(listOf())
+                        is NewsState.Successful -> newsAdapter.submitList(state.articles)
                         is NewsState.Fail -> TODO()
                     }
                 }

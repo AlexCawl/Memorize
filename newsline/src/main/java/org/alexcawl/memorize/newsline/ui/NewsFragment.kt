@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentNewsBinding
+import org.alexcawl.memorize.newsline.ui.current.CurrentNewsFragment
+import org.alexcawl.memorize.newsline.ui.saved.SavedNewsFragment
+import org.alexcawl.memorize.newsline.ui.search.SearchNewsFragment
 import org.alexcawl.memorize.ui.StatefulFragment
 import org.alexcawl.memorize.ui.replace
 
@@ -23,6 +26,16 @@ class NewsFragment : StatefulFragment() {
     }
 
     override fun setupBindings() {
+        /*
+        * Select start destination
+        * */
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.news_navigation_container, CurrentNewsFragment::class.java)
+            .commit()
+
+        /*
+        * Setup bottom navigation view
+        * */
         navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.current_news -> parentFragmentManager.beginTransaction()
@@ -42,9 +55,7 @@ class NewsFragment : StatefulFragment() {
         }
     }
 
-    override fun setupState() {
-
-    }
+    override fun setupState() = Unit
 
     override fun onDestroy() {
         super.onDestroy()

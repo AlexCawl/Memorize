@@ -1,15 +1,22 @@
 package org.alexcawl.memorize.newsline.domain
 
+import org.alexcawl.memorize.ui.DelegateAdapterItem
 import java.util.UUID
 
 data class Article(
-    val id: UUID,
+    val newsId: UUID,
     val title: String,
     val url: String,
     val source: String,
     val urlToImage: String?,
     val publishedAt: String,
     val author: String?,
-    val content: String?,
+    val newsContent: String?,
     val description: String?
-)
+) : DelegateAdapterItem {
+    override val id: Any
+        get() = newsId
+
+    override val content: Any
+        get() = title
+}

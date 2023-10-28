@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import org.alexcawl.memorize.di.ViewModelKey
 import org.alexcawl.memorize.di.ViewModelModule
-import org.alexcawl.memorize.newsline.ui.CurrentNewsViewModel
+import org.alexcawl.memorize.newsline.ui.current.CurrentNewsViewModel
 
 @Module(includes = [ViewModelModule::class])
 internal interface NewsLineModule {

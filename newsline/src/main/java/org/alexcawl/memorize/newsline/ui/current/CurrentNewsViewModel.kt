@@ -1,4 +1,4 @@
-package org.alexcawl.memorize.newsline.ui
+package org.alexcawl.memorize.newsline.ui.current
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import org.alexcawl.memorize.newsline.domain.Article
+import org.alexcawl.memorize.newsline.ui.NewsState
 import java.util.UUID
 import javax.inject.Inject
 

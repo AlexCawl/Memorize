@@ -11,7 +11,13 @@ abstract class StatefulFragment : Fragment() {
         setupState()
     }
 
+    /**
+     * Called in Fragment.onViewCreated. Used to configure bindings and set up views before state collecting.
+     * */
     abstract fun setupBindings()
 
+    /**
+     * Called in Fragment.onViewCreated. Called after setupBindings. Used to configure state collecting for screen.
+     * */
     abstract fun setupState()
 }

@@ -5,21 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentCurrentNewsBinding
 import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
-import org.alexcawl.memorize.newsline.ui.ArticleAdapterDelegate
+import org.alexcawl.memorize.newsline.ui.ArticleDelegateAdapter
 import org.alexcawl.memorize.newsline.ui.MarginItemDecorator
 import org.alexcawl.memorize.newsline.ui.NewsState
 import org.alexcawl.memorize.ui.CompositeAdapter
@@ -27,17 +25,24 @@ import org.alexcawl.memorize.ui.StatefulFragment
 import javax.inject.Inject
 
 class CurrentNewsFragment : StatefulFragment() {
+    /*
+    * Fragment binding
+    * */
     private var _binding: FragmentCurrentNewsBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentCurrentNewsBinding get() = _binding!!
 
-    private val title: TextView by lazy { binding.title }
-    private val iconProfile: ImageView by lazy { binding.profileIcon }
-    private val news: RecyclerView by lazy { binding.news }
-    private val tags: RecyclerView by lazy { binding.newsTagsSelected }
-
+    /*
+    * Dagger DI
+    * */
     @Inject
     lateinit var factory: ViewModelProvider.Factory
     private val model: CurrentNewsViewModel by viewModels { factory }
+
+    /*
+    * Fragment variables
+    * */
+    private var _newsAdapter: CompositeAdapter? = null
+    private val newsAdapter: CompositeAdapter get() = _newsAdapter!!
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -52,20 +57,30 @@ class CurrentNewsFragment : StatefulFragment() {
         return binding.root
     }
 
-    override fun setupBindings() = Unit
-
-    override fun setupState() {
-        val newsAdapter = CompositeAdapter.Builder()
-            .add(ArticleAdapterDelegate())
-            .build()
-        with(news) {
+    override fun setupBindings() {
+        /*
+        * Setup news adapter
+        * */
+        _newsAdapter = CompositeAdapter.Builder().add(ArticleDelegateAdapter()).build()
+        with(binding.news) {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter
             addItemDecoration(
                 MarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
             )
         }
-        viewLifecycleOwner.lifecycleScope.launch {
+
+        /*
+        * Setup tags adapter
+        * */
+        // TODO
+    }
+
+    override fun setupState() {
+        /*
+        * Setup news collecting
+        * */
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 model.state.collect { state ->
                     when (state) {
@@ -76,5 +91,15 @@ class CurrentNewsFragment : StatefulFragment() {
                 }
             }
         }
+
+        /*
+        * Setup tags collecting
+        * */
+        // TODO
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _newsAdapter = null
     }
 }

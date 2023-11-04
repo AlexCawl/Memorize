@@ -12,7 +12,7 @@ import org.alexcawl.memorize.newsline.domain.Article
 import org.alexcawl.memorize.ui.DelegateAdapter
 import org.alexcawl.memorize.ui.DelegateAdapterItem
 
-class ArticleAdapterDelegate: DelegateAdapter<Article, ArticleAdapterDelegate.ArticleViewHolder>(Article::class.java) {
+class ArticleDelegateAdapter : DelegateAdapter<Article, ArticleDelegateAdapter.ArticleViewHolder>(Article::class.java) {
     inner class ArticleViewHolder(
         private val binding: LayoutArticleBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -42,8 +42,6 @@ class ArticleAdapterDelegate: DelegateAdapter<Article, ArticleAdapterDelegate.Ar
     }
 
     override fun bindViewHolder(
-        model: Article,
-        viewHolder: ArticleViewHolder,
-        payloads: List<DelegateAdapterItem.Payload>
+        model: Article, viewHolder: ArticleViewHolder, payloads: List<DelegateAdapterItem.Payload>
     ) = viewHolder.onBind(model)
 }

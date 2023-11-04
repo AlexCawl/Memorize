@@ -1,4 +1,4 @@
-package org.alexcawl.memorize.newsline.ui
+package org.alexcawl.memorize.newsline.ui.base
 
 import androidx.lifecycle.ViewModel
 

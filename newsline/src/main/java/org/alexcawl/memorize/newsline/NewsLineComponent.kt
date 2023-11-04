@@ -4,7 +4,7 @@ import dagger.Component
 import org.alexcawl.memorize.newsline.di.NewsLineDependencies
 import org.alexcawl.memorize.newsline.di.NewsLineScope
 import org.alexcawl.memorize.newsline.ui.current.CurrentNewsFragment
-import org.alexcawl.memorize.newsline.ui.NewsFragment
+import org.alexcawl.memorize.newsline.ui.base.NewsFragment
 import org.alexcawl.memorize.newsline.ui.saved.SavedNewsFragment
 import org.alexcawl.memorize.newsline.ui.search.SearchNewsFragment
 

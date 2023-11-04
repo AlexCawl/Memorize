@@ -2,7 +2,7 @@ package org.alexcawl.memorize
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import org.alexcawl.memorize.newsline.ui.NewsFragment
+import org.alexcawl.memorize.newsline.ui.base.NewsFragment
 import org.alexcawl.memorize.ui.replace
 
 class MainActivity : AppCompatActivity() {

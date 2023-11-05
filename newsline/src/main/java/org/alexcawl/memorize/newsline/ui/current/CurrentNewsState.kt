@@ -1,13 +1,13 @@
-package org.alexcawl.memorize.newsline.ui
+package org.alexcawl.memorize.newsline.ui.current
 
 import org.alexcawl.memorize.newsline.domain.Article
 import org.alexcawl.memorize.newsline.domain.Filter
 
-sealed interface NewsState {
+sealed interface CurrentNewsState {
     val filters: List<Filter>
     val articles: List<Article>
 
-    data object Initial : NewsState {
+    data object Initial : CurrentNewsState {
         override val filters: List<Filter>
             get() = listOf()
         override val articles: List<Article>
@@ -17,9 +17,9 @@ sealed interface NewsState {
     data class Successful(
         override val filters: List<Filter>,
         override val articles: List<Article>
-    ) : NewsState
+    ) : CurrentNewsState
 
-    data class Fail(val message: String) : NewsState {
+    data class Fail(val message: String) : CurrentNewsState {
         override val filters: List<Filter>
             get() = listOf()
         override val articles: List<Article>

@@ -1,4 +1,4 @@
-package org.alexcawl.memorize.newsline.ui
+package org.alexcawl.memorize.newsline.ui.util
 
 import android.graphics.Rect
 import android.view.View

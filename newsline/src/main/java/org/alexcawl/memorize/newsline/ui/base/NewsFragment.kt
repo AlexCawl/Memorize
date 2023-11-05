@@ -9,9 +9,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentNewsBinding
-import org.alexcawl.memorize.ui.StatefulFragment
+import org.alexcawl.memorize.ui.StateFragment
 
-class NewsFragment : StatefulFragment() {
+class NewsFragment : StateFragment() {
     private var _binding: FragmentNewsBinding? = null
     private val binding get() = _binding!!
 

@@ -10,21 +10,20 @@ import kotlinx.coroutines.launch
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import org.alexcawl.memorize.newsline.domain.Article
-import org.alexcawl.memorize.newsline.ui.NewsState
 import java.util.UUID
 import javax.inject.Inject
 
 class CurrentNewsViewModel @Inject constructor(
     private val source: INewsArticleDataSource
 ) : ViewModel() {
-    private val _state: MutableStateFlow<NewsState> = MutableStateFlow(NewsState.Initial)
-    val state: StateFlow<NewsState> get() = _state.asStateFlow()
+    private val _state: MutableStateFlow<CurrentNewsState> = MutableStateFlow(CurrentNewsState.Initial)
+    val state: StateFlow<CurrentNewsState> get() = _state.asStateFlow()
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val articles: ArticleResponseDTO = source.getTopHeadlines("Israel")
             _state.emit(
-                NewsState.Successful(
+                CurrentNewsState.Successful(
                     listOf(),
                     articles.articles.map {
                         Article(

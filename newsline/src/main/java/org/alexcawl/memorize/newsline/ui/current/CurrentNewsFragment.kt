@@ -17,14 +17,13 @@ import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentCurrentNewsBinding
 import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
-import org.alexcawl.memorize.newsline.ui.ArticleDelegateAdapter
-import org.alexcawl.memorize.newsline.ui.MarginItemDecorator
-import org.alexcawl.memorize.newsline.ui.NewsState
+import org.alexcawl.memorize.newsline.ui.util.ArticleDelegateAdapter
+import org.alexcawl.memorize.newsline.ui.util.MarginItemDecorator
 import org.alexcawl.memorize.ui.CompositeAdapter
-import org.alexcawl.memorize.ui.StatefulFragment
+import org.alexcawl.memorize.ui.StateFragment
 import javax.inject.Inject
 
-class CurrentNewsFragment : StatefulFragment() {
+class CurrentNewsFragment : StateFragment() {
     /*
     * Fragment binding
     * */
@@ -41,8 +40,8 @@ class CurrentNewsFragment : StatefulFragment() {
     /*
     * Fragment variables
     * */
-    private var _newsAdapter: CompositeAdapter? = null
-    private val newsAdapter: CompositeAdapter get() = _newsAdapter!!
+    private lateinit var newsAdapter: CompositeAdapter
+    private lateinit var tagsAdapter: CompositeAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -61,7 +60,7 @@ class CurrentNewsFragment : StatefulFragment() {
         /*
         * Setup news adapter
         * */
-        _newsAdapter = CompositeAdapter.Builder().add(ArticleDelegateAdapter()).build()
+        newsAdapter = CompositeAdapter.Builder().add(ArticleDelegateAdapter()).build()
         with(binding.news) {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter
@@ -84,9 +83,9 @@ class CurrentNewsFragment : StatefulFragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 model.state.collect { state ->
                     when (state) {
-                        is NewsState.Initial -> newsAdapter.submitList(listOf())
-                        is NewsState.Successful -> newsAdapter.submitList(state.articles)
-                        is NewsState.Fail -> TODO()
+                        is CurrentNewsState.Initial -> newsAdapter.submitList(listOf())
+                        is CurrentNewsState.Successful -> newsAdapter.submitList(state.articles)
+                        is CurrentNewsState.Fail -> TODO()
                     }
                 }
             }
@@ -96,10 +95,5 @@ class CurrentNewsFragment : StatefulFragment() {
         * Setup tags collecting
         * */
         // TODO
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _newsAdapter = null
     }
 }

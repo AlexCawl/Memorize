@@ -1,11 +1,29 @@
 package org.alexcawl.memorize.newsline.domain
 
+import org.alexcawl.memorize.network.dto.Category
+import org.alexcawl.memorize.network.dto.Country
+
 sealed interface Filter {
-    val title: String
+    val description: String
 
-    data class Country(override val title: String) : Filter
+    data class QueryFilter(
+        override val description: String
+    ) : Filter
 
-    data class Category(override val title: String) : Filter
+    data class CategoryFilter(
+        val categoryId: Category,
+        override val description: String = categoryId.name
+    ) : Filter
 
-    data class Source(override val title: String) : Filter
+
+    data class CountryFilter(
+        val countryId: Country,
+        override val description: String = countryId.name
+    ) : Filter
+
+
+    data class SourceFilter(
+        val sourceId: String,
+        override val description: String = sourceId
+    ) : Filter
 }

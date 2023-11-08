@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import org.alexcawl.memorize.newsline.domain.Article
+import org.alexcawl.memorize.newsline.ui.search.TopNewsSearchMode
 import java.util.UUID
 import javax.inject.Inject
 
@@ -24,7 +25,7 @@ class CurrentNewsViewModel @Inject constructor(
             val articles: ArticleResponseDTO = source.getTopHeadlines("Israel")
             _state.emit(
                 CurrentNewsState.Successful(
-                    listOf(),
+                    TopNewsSearchMode.EmptyTopNewsSearchMode,
                     articles.articles.map {
                         Article(
                             UUID.randomUUID(),

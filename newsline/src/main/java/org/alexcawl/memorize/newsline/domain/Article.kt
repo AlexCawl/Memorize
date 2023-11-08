@@ -14,9 +14,9 @@ data class Article(
     val newsContent: String?,
     val description: String?
 ) : DelegateAdapterItem {
-    override val id: Any
+    override val diffId: Any
         get() = newsId
 
-    override val content: Any
+    override val diffContent: Any
         get() = title
 }

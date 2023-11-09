@@ -1,29 +1,48 @@
 package org.alexcawl.memorize.newsline.domain
 
-import org.alexcawl.memorize.network.dto.Category
-import org.alexcawl.memorize.network.dto.Country
+import org.alexcawl.memorize.ui.DAdapterItem
 
-sealed interface Filter {
+sealed interface Filter : DAdapterItem {
     val description: String
 
-    data class QueryFilter(
+    data class Query(
         override val description: String
-    ) : Filter
+    ) : Filter {
+        override val diffId: Any
+            get() = description
+        override val diffContent: Any
+            get() = description
+    }
 
-    data class CategoryFilter(
-        val categoryId: Category,
+    data class Category(
+        val categoryId: org.alexcawl.memorize.network.dto.Category,
         override val description: String = categoryId.name
-    ) : Filter
+    ) : Filter {
+        override val diffId: Any
+            get() = categoryId
+        override val diffContent: Any
+            get() = description
+    }
 
 
-    data class CountryFilter(
-        val countryId: Country,
+    data class Country(
+        val countryId: org.alexcawl.memorize.network.dto.Country,
         override val description: String = countryId.name
-    ) : Filter
+    ) : Filter {
+        override val diffId: Any
+            get() = countryId
+        override val diffContent: Any
+            get() = description
+    }
 
 
-    data class SourceFilter(
+    data class Source(
         val sourceId: String,
         override val description: String = sourceId
-    ) : Filter
+    ) : Filter {
+        override val diffId: Any
+            get() = sourceId
+        override val diffContent: Any
+            get() = description
+    }
 }

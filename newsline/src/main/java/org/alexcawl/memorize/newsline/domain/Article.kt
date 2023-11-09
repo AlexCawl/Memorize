@@ -1,6 +1,6 @@
 package org.alexcawl.memorize.newsline.domain
 
-import org.alexcawl.memorize.ui.DelegateAdapterItem
+import org.alexcawl.memorize.ui.DAdapterItem
 import java.util.UUID
 
 data class Article(
@@ -13,7 +13,7 @@ data class Article(
     val author: String?,
     val newsContent: String?,
     val description: String?
-) : DelegateAdapterItem {
+) : DAdapterItem {
     override val diffId: Any
         get() = newsId
 

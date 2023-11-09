@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class CompositeAdapter private constructor(
-    private val delegates: SparseArray<DelegateAdapter<DelegateAdapterItem, RecyclerView.ViewHolder>>
-): ListAdapter<DelegateAdapterItem, RecyclerView.ViewHolder>(DelegateAdapterItemDiffCallback()) {
+class CAdapter private constructor(
+    private val delegates: SparseArray<DAdapter<DAdapterItem, RecyclerView.ViewHolder>>
+): ListAdapter<DAdapterItem, RecyclerView.ViewHolder>(DAdapterItemDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         for (i in 0 until delegates.size()) {
@@ -30,7 +30,7 @@ class CompositeAdapter private constructor(
         val delegateAdapter = delegates[getItemViewType(position)]
 
         if (delegateAdapter != null) {
-            val delegatePayloads = payloads.map { it as DelegateAdapterItem.Payload }
+            val delegatePayloads = payloads.map { it as DAdapterItem.Payload }
             delegateAdapter.bindViewHolder(getItem(position), holder, delegatePayloads)
         } else {
             throw NullPointerException("can not find adapter for position $position")
@@ -54,17 +54,17 @@ class CompositeAdapter private constructor(
 
     class Builder {
         private var count: Int = 0
-        private val delegates: SparseArray<DelegateAdapter<DelegateAdapterItem, RecyclerView.ViewHolder>> = SparseArray()
+        private val delegates: SparseArray<DAdapter<DAdapterItem, RecyclerView.ViewHolder>> = SparseArray()
 
         @Suppress("UNCHECKED_CAST")
-        fun add(delegateAdapter: DelegateAdapter<out DelegateAdapterItem, *>): Builder {
-            delegates.put(count++, delegateAdapter as DelegateAdapter<DelegateAdapterItem, RecyclerView.ViewHolder>)
+        fun add(delegateAdapter: DAdapter<out DAdapterItem, *>): Builder {
+            delegates.put(count++, delegateAdapter as DAdapter<DAdapterItem, RecyclerView.ViewHolder>)
             return this
         }
 
-        fun build(): CompositeAdapter {
+        fun build(): CAdapter {
             require(count != 0) { "Register at least one adapter" }
-            return CompositeAdapter(delegates)
+            return CAdapter(delegates)
         }
     }
 }

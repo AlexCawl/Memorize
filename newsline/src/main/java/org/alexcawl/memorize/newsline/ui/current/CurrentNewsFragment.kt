@@ -17,9 +17,9 @@ import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentCurrentNewsBinding
 import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
-import org.alexcawl.memorize.newsline.ui.util.ArticleDelegateAdapter
+import org.alexcawl.memorize.newsline.ui.util.ArticleAdapter
 import org.alexcawl.memorize.newsline.ui.util.MarginItemDecorator
-import org.alexcawl.memorize.ui.CompositeAdapter
+import org.alexcawl.memorize.ui.CAdapter
 import org.alexcawl.memorize.ui.StateFragment
 import javax.inject.Inject
 
@@ -40,8 +40,8 @@ class CurrentNewsFragment : StateFragment() {
     /*
     * Fragment variables
     * */
-    private lateinit var newsAdapter: CompositeAdapter
-    private lateinit var tagsAdapter: CompositeAdapter
+    private lateinit var newsAdapter: CAdapter
+    private lateinit var tagsAdapter: CAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -60,7 +60,7 @@ class CurrentNewsFragment : StateFragment() {
         /*
         * Setup news adapter
         * */
-        newsAdapter = CompositeAdapter.Builder().add(ArticleDelegateAdapter()).build()
+        newsAdapter = CAdapter.Builder().add(ArticleAdapter()).build()
         with(binding.news) {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter
@@ -76,9 +76,6 @@ class CurrentNewsFragment : StateFragment() {
     }
 
     override fun setupState() {
-        /*
-        * Setup news collecting
-        * */
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 model.state.collect { state ->
@@ -90,10 +87,5 @@ class CurrentNewsFragment : StateFragment() {
                 }
             }
         }
-
-        /*
-        * Setup tags collecting
-        * */
-        // TODO
     }
 }

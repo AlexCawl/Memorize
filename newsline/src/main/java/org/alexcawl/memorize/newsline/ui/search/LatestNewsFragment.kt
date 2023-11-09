@@ -13,7 +13,7 @@ import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
 import org.alexcawl.memorize.ui.StateFragment
 import javax.inject.Inject
 
-class SearchNewsFragment : StateFragment() {
+class LatestNewsFragment : StateFragment() {
     /*
     * Fragment binding
     * */
@@ -25,7 +25,7 @@ class SearchNewsFragment : StateFragment() {
     * */
     @Inject
     lateinit var factory: ViewModelProvider.Factory
-    private val model: SearchNewsViewModel by viewModels { factory }
+    private val model: LatestNewsViewModel by viewModels { factory }
 
     override fun onAttach(context: Context) {
         DaggerNewsLineComponent.builder()

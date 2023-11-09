@@ -9,10 +9,10 @@ import coil.transform.RoundedCornersTransformation
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.LayoutArticleBinding
 import org.alexcawl.memorize.newsline.domain.Article
-import org.alexcawl.memorize.ui.DelegateAdapter
-import org.alexcawl.memorize.ui.DelegateAdapterItem
+import org.alexcawl.memorize.ui.DAdapter
+import org.alexcawl.memorize.ui.DAdapterItem
 
-class ArticleDelegateAdapter : DelegateAdapter<Article, ArticleDelegateAdapter.ArticleViewHolder>(Article::class.java) {
+class ArticleAdapter : DAdapter<Article, ArticleAdapter.ArticleViewHolder>(Article::class.java) {
     inner class ArticleViewHolder(
         private val binding: LayoutArticleBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -42,6 +42,6 @@ class ArticleDelegateAdapter : DelegateAdapter<Article, ArticleDelegateAdapter.A
     }
 
     override fun bindViewHolder(
-        model: Article, viewHolder: ArticleViewHolder, payloads: List<DelegateAdapterItem.Payload>
+        model: Article, viewHolder: ArticleViewHolder, payloads: List<DAdapterItem.Payload>
     ) = viewHolder.onBind(model)
 }

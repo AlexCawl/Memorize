@@ -2,33 +2,33 @@ package org.alexcawl.memorize.newsline.ui.search
 
 import org.alexcawl.memorize.newsline.domain.Article
 
-sealed interface TopNewsSearchScreenState {
-    val search: TopNewsSearchMode
+sealed interface LatestNewsState {
+    val search: NewsSearchMode
     val articles: List<Article>
 
-    data object Initial : TopNewsSearchScreenState {
-        override val search: TopNewsSearchMode
-            get() = TopNewsSearchMode.EmptyTopNewsSearchMode
+    data object Initial : LatestNewsState {
+        override val search: NewsSearchMode
+            get() = NewsSearchMode.EmptyNewsSearchMode
 
         override val articles: List<Article>
             get() = listOf()
     }
 
-    data class Loading(override val search: TopNewsSearchMode) : TopNewsSearchScreenState {
+    data class Loading(override val search: NewsSearchMode) : LatestNewsState {
         override val articles: List<Article>
             get() = listOf()
 
     }
 
     data class Successful(
-        override val search: TopNewsSearchMode,
+        override val search: NewsSearchMode,
         override val articles: List<Article>
-    ) : TopNewsSearchScreenState
+    ) : LatestNewsState
 
     data class Fail(
-        override val search: TopNewsSearchMode,
+        override val search: NewsSearchMode,
         val message: String
-    ) : TopNewsSearchScreenState {
+    ) : LatestNewsState {
         override val articles: List<Article>
             get() = listOf()
     }

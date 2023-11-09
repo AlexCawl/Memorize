@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/search_news"
-        android:name="org.alexcawl.memorize.newsline.ui.search.SearchNewsFragment"
+        android:name="org.alexcawl.memorize.newsline.ui.search.LatestNewsFragment"
         android:label="fragment_search_news"
         tools:layout="@layout/fragment_search_news" />
 </navigation>

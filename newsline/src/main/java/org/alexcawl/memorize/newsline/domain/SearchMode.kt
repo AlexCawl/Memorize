@@ -12,5 +12,10 @@ interface SearchMode : Iterable<Filter> {
     data class IconAction(
         val iconType: IconType,
         override val description: String = iconType.toString()
-    ) : Filter
+    ) : Filter {
+        override val diffId: Any
+            get() = iconType
+        override val diffContent: Any
+            get() = description
+    }
 }

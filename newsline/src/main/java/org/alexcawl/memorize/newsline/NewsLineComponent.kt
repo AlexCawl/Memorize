@@ -6,7 +6,7 @@ import org.alexcawl.memorize.newsline.di.NewsLineScope
 import org.alexcawl.memorize.newsline.ui.current.CurrentNewsFragment
 import org.alexcawl.memorize.newsline.ui.base.NewsFragment
 import org.alexcawl.memorize.newsline.ui.saved.SavedNewsFragment
-import org.alexcawl.memorize.newsline.ui.search.SearchNewsFragment
+import org.alexcawl.memorize.newsline.ui.search.LatestNewsFragment
 
 @Component(dependencies = [NewsLineDependencies::class], modules = [NewsLineModule::class])
 @NewsLineScope
@@ -24,5 +24,5 @@ interface NewsLineComponent {
 
     fun inject(fragment: SavedNewsFragment)
 
-    fun inject(fragment: SearchNewsFragment)
+    fun inject(fragment: LatestNewsFragment)
 }

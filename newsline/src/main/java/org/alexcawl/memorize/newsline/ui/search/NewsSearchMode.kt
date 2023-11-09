@@ -3,19 +3,19 @@ package org.alexcawl.memorize.newsline.ui.search
 import org.alexcawl.memorize.newsline.domain.Filter
 import org.alexcawl.memorize.newsline.domain.SearchMode
 
-sealed interface TopNewsSearchMode : SearchMode {
-    data object EmptyTopNewsSearchMode : TopNewsSearchMode {
+sealed interface NewsSearchMode : SearchMode {
+    data object EmptyNewsSearchMode : NewsSearchMode {
         override val iconAction: SearchMode.IconAction
             get() = SearchMode.IconAction(SearchMode.IconType.ADD)
 
         override fun iterator(): Iterator<Filter> = listOf<Filter>().iterator()
     }
 
-    data class TagTopNewsSearchMode(
-        val query: Filter.QueryFilter,
-        val country: Filter.CountryFilter?,
-        val category: Filter.CategoryFilter?
-    ) : TopNewsSearchMode {
+    data class TagNewsSearchMode(
+        val query: Filter.Query,
+        val country: Filter.Country?,
+        val category: Filter.Category?
+    ) : NewsSearchMode {
         override val iconAction: SearchMode.IconAction
             get() = when {
                 country == null && category == null -> SearchMode.IconType.ADD
@@ -32,10 +32,10 @@ sealed interface TopNewsSearchMode : SearchMode {
         }
     }
 
-    data class SourceTopNewsSearchMode(
-        val query: Filter.QueryFilter,
-        val sources: List<Filter.SourceFilter>
-    ) : TopNewsSearchMode {
+    data class SourceNewsSearchMode(
+        val query: Filter.Query,
+        val sources: List<Filter.Source>
+    ) : NewsSearchMode {
         override val iconAction: SearchMode.IconAction
             get() = when {
                 sources.isEmpty() -> SearchMode.IconType.ADD

@@ -9,22 +9,22 @@ import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.ui.StateHolder
 import javax.inject.Inject
 
-class SearchNewsViewModel @Inject constructor(
+class LatestNewsViewModel @Inject constructor(
     private val source: INewsArticleDataSource
-) : StateHolder<TopNewsSearchScreenState, TopNewsSearchAction>() {
-    private val _state: MutableStateFlow<TopNewsSearchScreenState> =
-        MutableStateFlow(TopNewsSearchScreenState.Initial)
-    override val state: StateFlow<TopNewsSearchScreenState> = _state.asStateFlow()
+) : StateHolder<LatestNewsState, LatestNewsAction>() {
+    private val _state: MutableStateFlow<LatestNewsState> =
+        MutableStateFlow(LatestNewsState.Initial)
+    override val state: StateFlow<LatestNewsState> = _state.asStateFlow()
 
-    override fun handle(action: TopNewsSearchAction) {
+    override fun handle(action: LatestNewsAction) {
         when (action) {
-            is TopNewsSearchAction.ChangeSearchMode -> {
+            is LatestNewsAction.ChangeSearchMode -> {
                 viewModelScope.launch {
-                    _state.emit(TopNewsSearchScreenState.Loading(action.searchMode))
+                    _state.emit(LatestNewsState.Loading(action.searchMode))
                     fetchArticles()
                 }
             }
-            is TopNewsSearchAction.UpdateNews -> {
+            is LatestNewsAction.UpdateNews -> {
                 viewModelScope.launch {
                     fetchArticles()
                 }
@@ -33,7 +33,7 @@ class SearchNewsViewModel @Inject constructor(
     }
 
     private suspend fun fetchArticles() {
-        val mode: TopNewsSearchMode = state.value.search
+        val mode: NewsSearchMode = state.value.search
         // TODO выход в сеть
     }
 }

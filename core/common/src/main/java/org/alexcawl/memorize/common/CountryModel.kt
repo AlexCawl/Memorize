@@ -1,6 +1,6 @@
-package org.alexcawl.memorize.network.dto
+package org.alexcawl.memorize.common
 
-enum class Country {
+enum class CountryModel {
     AE,
     AR,
     AT,

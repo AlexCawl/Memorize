@@ -1,8 +1,10 @@
 package org.alexcawl.memorize.newsline.domain
 
-import org.alexcawl.memorize.ui.DAdapterItem
+import org.alexcawl.memorize.common.CategoryModel
+import org.alexcawl.memorize.common.CountryModel
+import org.alexcawl.memorize.ui.DelegateAdapterItem
 
-sealed interface Filter : DAdapterItem {
+sealed interface Filter : DelegateAdapterItem {
     val description: String
 
     data class Query(
@@ -15,7 +17,7 @@ sealed interface Filter : DAdapterItem {
     }
 
     data class Category(
-        val categoryId: org.alexcawl.memorize.network.dto.Category,
+        val categoryId: CategoryModel,
         override val description: String = categoryId.name
     ) : Filter {
         override val diffId: Any
@@ -26,7 +28,7 @@ sealed interface Filter : DAdapterItem {
 
 
     data class Country(
-        val countryId: org.alexcawl.memorize.network.dto.Country,
+        val countryId: CountryModel,
         override val description: String = countryId.name
     ) : Filter {
         override val diffId: Any

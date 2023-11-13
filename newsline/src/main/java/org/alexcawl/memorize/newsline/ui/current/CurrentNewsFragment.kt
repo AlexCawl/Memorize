@@ -19,7 +19,7 @@ import org.alexcawl.memorize.newsline.databinding.FragmentCurrentNewsBinding
 import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
 import org.alexcawl.memorize.newsline.ui.util.ArticleAdapter
 import org.alexcawl.memorize.newsline.ui.util.MarginItemDecorator
-import org.alexcawl.memorize.ui.CAdapter
+import org.alexcawl.memorize.ui.CompositeAdapter
 import org.alexcawl.memorize.ui.StateFragment
 import javax.inject.Inject
 
@@ -40,8 +40,8 @@ class CurrentNewsFragment : StateFragment() {
     /*
     * Fragment variables
     * */
-    private lateinit var newsAdapter: CAdapter
-    private lateinit var tagsAdapter: CAdapter
+    private lateinit var newsAdapter: CompositeAdapter
+    private lateinit var tagsAdapter: CompositeAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -60,7 +60,7 @@ class CurrentNewsFragment : StateFragment() {
         /*
         * Setup news adapter
         * */
-        newsAdapter = CAdapter.Builder().add(ArticleAdapter()).build()
+        newsAdapter = CompositeAdapter.Builder().add(ArticleAdapter()).build()
         with(binding.news) {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter

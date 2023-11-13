@@ -9,18 +9,18 @@ import coil.transform.RoundedCornersTransformation
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.LayoutArticleBinding
 import org.alexcawl.memorize.newsline.domain.Article
-import org.alexcawl.memorize.ui.DAdapter
-import org.alexcawl.memorize.ui.DAdapterItem
+import org.alexcawl.memorize.ui.DelegateAdapter
+import org.alexcawl.memorize.ui.DelegateAdapterItem
 
-class ArticleAdapter : DAdapter<Article, ArticleAdapter.ArticleViewHolder>(Article::class.java) {
+class ArticleAdapter : DelegateAdapter<Article, ArticleAdapter.ArticleViewHolder>(Article::class.java) {
     inner class ArticleViewHolder(
         private val binding: LayoutArticleBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(article: Article) {
-            binding.title.text = article.title.trim()
-            binding.source.text = article.source.trim()
+        fun onBind(model: Article) {
+            binding.title.text = model.title.trim()
+            binding.source.text = model.source.trim()
 
-            binding.articleImage.load(article.urlToImage ?: "") {
+            binding.articleImage.load(model.urlToImage ?: "") {
                 scale(Scale.FILL)
                 placeholder(org.alexcawl.memorize.ui.R.drawable.outline_image_not_supported_24)
                 error(org.alexcawl.memorize.ui.R.drawable.outline_broken_image_24)
@@ -42,6 +42,6 @@ class ArticleAdapter : DAdapter<Article, ArticleAdapter.ArticleViewHolder>(Artic
     }
 
     override fun bindViewHolder(
-        model: Article, viewHolder: ArticleViewHolder, payloads: List<DAdapterItem.Payload>
+        model: Article, viewHolder: ArticleViewHolder, payloads: List<DelegateAdapterItem.Payload>
     ) = viewHolder.onBind(model)
 }

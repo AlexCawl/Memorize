@@ -5,3 +5,7 @@ plugins {
 android {
     namespace = "network".asModuleName()
 }
+
+dependencies {
+    implementation(project(":core:common"))
+}

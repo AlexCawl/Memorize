@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:backgroundTint="?attr/colorSecondary"
+    android:elevation="4dp"
+    app:cardCornerRadius="8dp"
+    app:contentPadding="8dp">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tag_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:drawableTint="?attr/colorOnSecondary"
+        android:gravity="center"
+        android:textAppearance="@style/Font.Button"
+        android:textColor="?attr/colorOnSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:drawableStart="@drawable/baseline_account_circle_24"
+        tools:text="Example text" />
+</androidx.cardview.widget.CardView>
+

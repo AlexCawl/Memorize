@@ -8,11 +8,11 @@ import org.alexcawl.memorize.newsline.domain.Filter
 import org.alexcawl.memorize.ui.DelegateAdapter
 import org.alexcawl.memorize.ui.DelegateAdapterItem
 
-class CountryAdapter : DelegateAdapter<Filter.Country, CountryAdapter.CountryViewHolder>(Filter.Country::class.java) {
-    inner class CountryViewHolder(
+class CategoryAdapter : DelegateAdapter<Filter.Category, CategoryAdapter.CategoryViewHolder>(Filter.Category::class.java) {
+    inner class CategoryViewHolder(
         private val binding: LayoutTagBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(model: Filter.Country) {
+        fun onBind(model: Filter.Category) {
             binding.tagTitle.text = model.description
         }
     }
@@ -20,12 +20,12 @@ class CountryAdapter : DelegateAdapter<Filter.Country, CountryAdapter.CountryVie
     override fun createViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = LayoutTagBinding.inflate(inflater, parent, false)
-        return CountryViewHolder(binding)
+        return CategoryViewHolder(binding)
     }
 
     override fun bindViewHolder(
-        model: Filter.Country,
-        viewHolder: CountryViewHolder,
+        model: Filter.Category,
+        viewHolder: CategoryViewHolder,
         payloads: List<DelegateAdapterItem.Payload>
     ) = viewHolder.onBind(model)
 }

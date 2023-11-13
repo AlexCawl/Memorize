@@ -5,8 +5,8 @@ import org.alexcawl.memorize.newsline.domain.SearchMode
 
 sealed interface NewsSearchMode : SearchMode {
     data object EmptyNewsSearchMode : NewsSearchMode {
-        override val iconAction: SearchMode.IconAction
-            get() = SearchMode.IconAction(SearchMode.IconType.ADD)
+        override val actionIcon: SearchMode.ActionIcon
+            get() = SearchMode.ActionIcon(SearchMode.IconType.ADD)
 
         override fun iterator(): Iterator<Filter> = listOf<Filter>().iterator()
     }
@@ -16,18 +16,18 @@ sealed interface NewsSearchMode : SearchMode {
         val country: Filter.Country?,
         val category: Filter.Category?
     ) : NewsSearchMode {
-        override val iconAction: SearchMode.IconAction
+        override val actionIcon: SearchMode.ActionIcon
             get() = when {
                 country == null && category == null -> SearchMode.IconType.ADD
                 country == null || category == null -> SearchMode.IconType.CHANGE
                 else -> SearchMode.IconType.CONFIGURE
-            }.let { SearchMode.IconAction(it) }
+            }.let { SearchMode.ActionIcon(it) }
 
         override fun iterator(): Iterator<Filter> {
             return mutableListOf<Filter>(query).apply {
                 country?.let { add(country) }
                 category?.let { add(category) }
-                add(iconAction)
+                add(actionIcon)
             }.toList().iterator()
         }
     }
@@ -36,16 +36,16 @@ sealed interface NewsSearchMode : SearchMode {
         val query: Filter.Query,
         val sources: List<Filter.Source>
     ) : NewsSearchMode {
-        override val iconAction: SearchMode.IconAction
+        override val actionIcon: SearchMode.ActionIcon
             get() = when {
                 sources.isEmpty() -> SearchMode.IconType.ADD
                 else -> SearchMode.IconType.CHANGE
-            }.let { SearchMode.IconAction(it) }
+            }.let { SearchMode.ActionIcon(it) }
 
         override fun iterator(): Iterator<Filter> {
             return mutableListOf<Filter>(query).apply {
                 addAll(sources)
-                add(iconAction)
+                add(actionIcon)
             }.toList().iterator()
         }
     }

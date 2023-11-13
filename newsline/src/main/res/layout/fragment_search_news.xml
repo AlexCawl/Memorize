@@ -68,7 +68,7 @@
                 app:layout_collapseMode="none">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/news_tags_selected"
+                    android:id="@+id/tags"
                     android:layout_width="0dp"
                     android:layout_height="64dp"
                     android:layout_marginTop="16dp"

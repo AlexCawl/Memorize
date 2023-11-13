@@ -5,3 +5,7 @@ plugins {
 android {
     namespace = "persistence".asModuleName()
 }
+
+dependencies {
+    implementation(project(":core:common"))
+}

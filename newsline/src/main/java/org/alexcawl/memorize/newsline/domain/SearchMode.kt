@@ -1,7 +1,7 @@
 package org.alexcawl.memorize.newsline.domain
 
 interface SearchMode : Iterable<Filter> {
-    val iconAction: IconAction
+    val actionIcon: ActionIcon
 
     enum class IconType {
         ADD,
@@ -9,7 +9,7 @@ interface SearchMode : Iterable<Filter> {
         CONFIGURE
     }
 
-    data class IconAction(
+    data class ActionIcon(
         val iconType: IconType,
         override val description: String = iconType.toString()
     ) : Filter {

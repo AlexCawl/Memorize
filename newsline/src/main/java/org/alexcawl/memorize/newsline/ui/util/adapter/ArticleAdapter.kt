@@ -43,5 +43,6 @@ object ArticleAdapter : DelegateAdapter<ArticleModel, ArticleAdapter.ArticleView
         return ArticleViewHolder(binding)
     }
 
-    override fun bindViewHolder(model: ArticleModel, viewHolder: ArticleViewHolder) = viewHolder.onBind(model)
+    override fun bindViewHolder(model: ArticleModel, viewHolder: ArticleViewHolder) =
+        viewHolder.onBind(model)
 }

@@ -2,49 +2,42 @@ package org.alexcawl.memorize.newsline.domain
 
 import org.alexcawl.memorize.common.CategoryModel
 import org.alexcawl.memorize.common.CountryModel
-import org.alexcawl.memorize.ui.DelegateAdapterItem
 
-sealed interface Filter : DelegateAdapterItem {
-    val description: String
+sealed interface Filter {
+    val id: Int
+    val content: String
 
     data class Query(
-        override val description: String
+        override val content: String
     ) : Filter {
-        override val diffId: Any
-            get() = description
-        override val diffContent: Any
-            get() = description
+        override val id: Int
+            get() = content.hashCode()
     }
 
     data class Category(
-        val categoryId: CategoryModel,
-        override val description: String = categoryId.name
+        val category: CategoryModel,
+        override val content: String = category.name
     ) : Filter {
-        override val diffId: Any
-            get() = categoryId
-        override val diffContent: Any
-            get() = description
+        override val id: Int
+            get() = category.hashCode()
+
     }
 
 
     data class Country(
-        val countryId: CountryModel,
-        override val description: String = countryId.name
+        val country: CountryModel,
+        override val content: String = country.name
     ) : Filter {
-        override val diffId: Any
-            get() = countryId
-        override val diffContent: Any
-            get() = description
+        override val id: Int
+            get() = country.hashCode()
     }
 
 
     data class Source(
-        val sourceId: String,
-        override val description: String = sourceId
+        val source: String,
+        override val content: String = source
     ) : Filter {
-        override val diffId: Any
-            get() = sourceId
-        override val diffContent: Any
-            get() = description
+        override val id: Int
+            get() = source.hashCode()
     }
 }

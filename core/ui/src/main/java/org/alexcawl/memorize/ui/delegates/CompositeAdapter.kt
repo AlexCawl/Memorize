@@ -15,7 +15,7 @@ class CompositeAdapter<M : Any> private constructor(
         private val adapters: MutableList<DelegateAdapter<M, RecyclerView.ViewHolder>> = mutableListOf()
 
         @Suppress("UNCHECKED_CAST")
-        fun add(adapter: DelegateAdapter<M, *>): Builder<M> {
+        fun add(adapter: DelegateAdapter<*, *>): Builder<M> {
             adapters.add(adapter as DelegateAdapter<M, RecyclerView.ViewHolder>)
             return this
         }

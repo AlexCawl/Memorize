@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 import org.alexcawl.memorize.common.ArticleModel
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
-import org.alexcawl.memorize.newsline.domain.Article
 import org.alexcawl.memorize.newsline.ui.search.NewsSearchMode
 import java.util.UUID
 import javax.inject.Inject

@@ -4,18 +4,14 @@ interface SearchMode : Iterable<Filter> {
     val actionIcon: ActionIcon
 
     enum class IconType {
-        ADD,
-        CHANGE,
-        CONFIGURE
+        ADD, CHANGE, CONFIGURE
     }
 
     data class ActionIcon(
         val iconType: IconType,
-        override val description: String = iconType.toString()
+        override val content: String = iconType.toString()
     ) : Filter {
-        override val diffId: Any
-            get() = iconType
-        override val diffContent: Any
-            get() = description
+        override val id: Int
+            get() = iconType.hashCode()
     }
 }

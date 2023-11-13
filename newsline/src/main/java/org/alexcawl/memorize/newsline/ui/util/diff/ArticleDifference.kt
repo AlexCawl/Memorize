@@ -1,7 +1,7 @@
 package org.alexcawl.memorize.newsline.ui.util.diff
 
 import androidx.recyclerview.widget.DiffUtil
-import org.alexcawl.memorize.common.ArticleModel
+import org.alexcawl.memorize.common.model.ArticleModel
 
 object ArticleDifference : DiffUtil.ItemCallback<ArticleModel>() {
     override fun areItemsTheSame(oldItem: ArticleModel, newItem: ArticleModel): Boolean =

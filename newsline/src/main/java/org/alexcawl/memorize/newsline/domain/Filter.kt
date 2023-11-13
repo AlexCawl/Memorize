@@ -1,7 +1,7 @@
 package org.alexcawl.memorize.newsline.domain
 
-import org.alexcawl.memorize.common.CategoryModel
-import org.alexcawl.memorize.common.CountryModel
+import org.alexcawl.memorize.common.model.CategoryModel
+import org.alexcawl.memorize.common.model.CountryModel
 
 sealed interface Filter {
     val id: Int

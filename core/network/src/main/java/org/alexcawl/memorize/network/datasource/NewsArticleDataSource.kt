@@ -6,8 +6,8 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.request.url
 import org.alexcawl.memorize.network.NetworkConfiguration
-import org.alexcawl.memorize.common.CategoryModel
-import org.alexcawl.memorize.common.CountryModel
+import org.alexcawl.memorize.common.model.CategoryModel
+import org.alexcawl.memorize.common.model.CountryModel
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import javax.inject.Inject
 

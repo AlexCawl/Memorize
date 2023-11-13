@@ -6,12 +6,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import org.alexcawl.memorize.common.ArticleModel
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
+import org.alexcawl.memorize.network.mapper.ArticleMapper
 import org.alexcawl.memorize.newsline.domain.Filter
 import org.alexcawl.memorize.ui.StateHolder
-import java.util.UUID
 import javax.inject.Inject
 
 class LatestNewsViewModel @Inject constructor(
@@ -27,19 +26,7 @@ class LatestNewsViewModel @Inject constructor(
             _state.emit(
                 LatestNewsState.Successful(
                     NewsSearchMode.TagNewsSearchMode(Filter.Query("Israel"), null, null),
-                    articles.articles.map {
-                        ArticleModel(
-                            UUID.randomUUID(),
-                            it.title,
-                            it.url,
-                            it.source.name,
-                            it.publishedAt,
-                            it.urlToImage,
-                            it.author,
-                            it.content,
-                            it.description
-                        )
-                    }
+                    articles.articles.map(ArticleMapper::map)
                 )
             )
         }

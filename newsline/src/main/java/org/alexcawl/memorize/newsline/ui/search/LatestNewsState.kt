@@ -1,6 +1,6 @@
 package org.alexcawl.memorize.newsline.ui.search
 
-import org.alexcawl.memorize.common.ArticleModel
+import org.alexcawl.memorize.common.model.ArticleModel
 
 sealed interface LatestNewsState {
     val search: NewsSearchMode

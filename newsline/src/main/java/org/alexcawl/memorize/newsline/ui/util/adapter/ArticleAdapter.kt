@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
 import coil.transform.RoundedCornersTransformation
-import org.alexcawl.memorize.common.ArticleModel
+import org.alexcawl.memorize.common.model.ArticleModel
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.LayoutArticleBinding
 import org.alexcawl.memorize.ui.delegates.DelegateAdapter

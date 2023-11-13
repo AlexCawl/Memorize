@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import org.alexcawl.memorize.common.ArticleModel
+import org.alexcawl.memorize.common.model.ArticleModel
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import org.alexcawl.memorize.newsline.ui.search.NewsSearchMode

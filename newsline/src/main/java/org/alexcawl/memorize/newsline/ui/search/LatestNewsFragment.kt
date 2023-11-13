@@ -13,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.alexcawl.memorize.common.ArticleModel
+import org.alexcawl.memorize.common.model.ArticleModel
 import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentSearchNewsBinding
@@ -94,6 +94,9 @@ class LatestNewsFragment : StateFragment() {
         with(binding.tags) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = tagsAdapter
+            addItemDecoration(
+                MarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
+            )
         }
     }
 

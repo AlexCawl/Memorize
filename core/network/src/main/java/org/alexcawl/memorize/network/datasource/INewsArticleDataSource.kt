@@ -1,7 +1,7 @@
 package org.alexcawl.memorize.network.datasource
 
-import org.alexcawl.memorize.common.CategoryModel
-import org.alexcawl.memorize.common.CountryModel
+import org.alexcawl.memorize.common.model.CategoryModel
+import org.alexcawl.memorize.common.model.CountryModel
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 
 interface INewsArticleDataSource {

@@ -1,6 +1,6 @@
 package org.alexcawl.memorize.newsline.ui.current
 
-import org.alexcawl.memorize.common.ArticleModel
+import org.alexcawl.memorize.common.model.ArticleModel
 import org.alexcawl.memorize.newsline.ui.search.NewsSearchMode
 
 sealed interface CurrentNewsState {

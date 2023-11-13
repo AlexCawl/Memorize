@@ -1,5 +1,6 @@
 package org.alexcawl.memorize.newsline.ui.util.adapter
 
+import android.graphics.drawable.Icon
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,14 +9,25 @@ import org.alexcawl.memorize.newsline.domain.SearchMode
 import org.alexcawl.memorize.ui.delegates.DelegateAdapter
 import org.alexcawl.memorize.ui.delegates.DelegateViewHolder
 
-object ActionIconAdapter : DelegateAdapter<SearchMode.ActionIcon, ActionIconAdapter.ActionIconViewHolder>(
-    SearchMode.ActionIcon::class.java
-) {
+object ActionIconAdapter :
+    DelegateAdapter<SearchMode.ActionIcon, ActionIconAdapter.ActionIconViewHolder>(
+        SearchMode.ActionIcon::class.java
+    ) {
     class ActionIconViewHolder(
         binding: LayoutActionButtonBinding
     ) : DelegateViewHolder<SearchMode.ActionIcon, LayoutActionButtonBinding>(binding) {
         override fun onBind(model: SearchMode.ActionIcon) {
-            // TODO
+            when (model.iconType) {
+                SearchMode.IconType.ADD -> binding.actionIcon.setImageIcon(
+                    Icon.createWithResource(
+                        binding.root.context,
+                        org.alexcawl.memorize.ui.R.drawable.baseline_add_24
+                    )
+                )
+
+                SearchMode.IconType.CHANGE -> TODO()
+                SearchMode.IconType.CONFIGURE -> TODO()
+            }
         }
     }
 
@@ -25,5 +37,6 @@ object ActionIconAdapter : DelegateAdapter<SearchMode.ActionIcon, ActionIconAdap
         return ActionIconViewHolder(binding)
     }
 
-    override fun bindViewHolder(model: SearchMode.ActionIcon, viewHolder: ActionIconViewHolder) = viewHolder.onBind(model)
+    override fun bindViewHolder(model: SearchMode.ActionIcon, viewHolder: ActionIconViewHolder) =
+        viewHolder.onBind(model)
 }

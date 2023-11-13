@@ -1,4 +1,4 @@
-package org.alexcawl.memorize.common
+package org.alexcawl.memorize.common.model
 
 import java.util.UUID
 

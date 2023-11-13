@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import org.alexcawl.memorize.common.ArticleModel
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import org.alexcawl.memorize.newsline.domain.Article
@@ -27,13 +28,13 @@ class CurrentNewsViewModel @Inject constructor(
                 CurrentNewsState.Successful(
                     NewsSearchMode.EmptyNewsSearchMode,
                     articles.articles.map {
-                        Article(
+                        ArticleModel(
                             UUID.randomUUID(),
                             it.title,
                             it.url,
                             it.source.name,
-                            it.urlToImage,
                             it.publishedAt,
+                            it.urlToImage,
                             it.author,
                             it.content,
                             it.description

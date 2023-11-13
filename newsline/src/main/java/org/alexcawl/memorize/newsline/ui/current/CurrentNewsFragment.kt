@@ -13,14 +13,16 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.alexcawl.memorize.common.ArticleModel
 import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentCurrentNewsBinding
 import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
-import org.alexcawl.memorize.newsline.ui.util.ArticleAdapter
 import org.alexcawl.memorize.newsline.ui.util.MarginItemDecorator
-import org.alexcawl.memorize.ui.CompositeAdapter
+import org.alexcawl.memorize.newsline.ui.util.adapter.ArticleAdapter
+import org.alexcawl.memorize.newsline.ui.util.diff.ArticleDifference
 import org.alexcawl.memorize.ui.StateFragment
+import org.alexcawl.memorize.ui.delegates.CompositeAdapter
 import javax.inject.Inject
 
 class CurrentNewsFragment : StateFragment() {
@@ -40,8 +42,7 @@ class CurrentNewsFragment : StateFragment() {
     /*
     * Fragment variables
     * */
-    private lateinit var newsAdapter: CompositeAdapter
-    private lateinit var tagsAdapter: CompositeAdapter
+    private lateinit var newsAdapter: CompositeAdapter<ArticleModel>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -60,7 +61,7 @@ class CurrentNewsFragment : StateFragment() {
         /*
         * Setup news adapter
         * */
-        newsAdapter = CompositeAdapter.Builder().add(ArticleAdapter()).build()
+        newsAdapter = CompositeAdapter.Builder(ArticleDifference).add(ArticleAdapter).build()
         with(binding.news) {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter

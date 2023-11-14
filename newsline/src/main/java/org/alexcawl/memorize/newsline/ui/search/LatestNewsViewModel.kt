@@ -6,6 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import org.alexcawl.memorize.common.model.CategoryModel
+import org.alexcawl.memorize.common.model.CountryModel
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
 import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import org.alexcawl.memorize.network.mapper.ArticleMapper
@@ -25,7 +27,7 @@ class LatestNewsViewModel @Inject constructor(
             val articles: ArticleResponseDTO = source.getTopHeadlines("Israel")
             _state.emit(
                 LatestNewsState.Successful(
-                    NewsSearchMode.TagNewsSearchMode(Filter.Query("Israel"), null, null),
+                    NewsSearchMode.TagNewsSearchMode(Filter.Query("Israel"), Filter.Country(CountryModel.RU), Filter.Category(CategoryModel.GENERAL)),
                     articles.articles.map(ArticleMapper::map)
                 )
             )

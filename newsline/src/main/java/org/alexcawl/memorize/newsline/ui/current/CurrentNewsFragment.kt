@@ -18,7 +18,7 @@ import org.alexcawl.memorize.newsline.DaggerNewsLineComponent
 import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentCurrentNewsBinding
 import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
-import org.alexcawl.memorize.newsline.ui.util.MarginItemDecorator
+import org.alexcawl.memorize.newsline.ui.util.VerticalMarginItemDecorator
 import org.alexcawl.memorize.newsline.ui.util.adapter.ArticleAdapter
 import org.alexcawl.memorize.newsline.ui.util.diff.ArticleDifference
 import org.alexcawl.memorize.ui.StateFragment
@@ -66,7 +66,7 @@ class CurrentNewsFragment : StateFragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter
             addItemDecoration(
-                MarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
+                VerticalMarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
             )
         }
 

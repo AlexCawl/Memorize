@@ -26,7 +26,12 @@ object ActionIconAdapter :
                 )
 
                 SearchMode.IconType.CHANGE -> TODO()
-                SearchMode.IconType.CONFIGURE -> TODO()
+                SearchMode.IconType.CONFIGURE -> binding.actionIcon.setImageIcon(
+                    Icon.createWithResource(
+                        binding.root.context,
+                        org.alexcawl.memorize.ui.R.drawable.baseline_settings_24
+                    )
+                )
             }
         }
     }

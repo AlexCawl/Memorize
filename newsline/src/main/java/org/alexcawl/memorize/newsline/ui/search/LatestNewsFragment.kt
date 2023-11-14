@@ -19,7 +19,8 @@ import org.alexcawl.memorize.newsline.R
 import org.alexcawl.memorize.newsline.databinding.FragmentSearchNewsBinding
 import org.alexcawl.memorize.newsline.di.NewsLineDependenciesStore
 import org.alexcawl.memorize.newsline.domain.Filter
-import org.alexcawl.memorize.newsline.ui.util.MarginItemDecorator
+import org.alexcawl.memorize.newsline.ui.util.HorizontalMarginItemDecorator
+import org.alexcawl.memorize.newsline.ui.util.VerticalMarginItemDecorator
 import org.alexcawl.memorize.newsline.ui.util.adapter.ActionIconAdapter
 import org.alexcawl.memorize.newsline.ui.util.adapter.ArticleAdapter
 import org.alexcawl.memorize.newsline.ui.util.adapter.CategoryAdapter
@@ -78,7 +79,7 @@ class LatestNewsFragment : StateFragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = newsAdapter
             addItemDecoration(
-                MarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
+                VerticalMarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
             )
         }
 
@@ -95,7 +96,7 @@ class LatestNewsFragment : StateFragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = tagsAdapter
             addItemDecoration(
-                MarginItemDecorator(resources.getDimensionPixelSize(R.dimen.articles_margin_between))
+                HorizontalMarginItemDecorator(resources.getDimensionPixelSize(R.dimen.tags_margin_between))
             )
         }
     }

@@ -4,30 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
-    android:backgroundTint="?attr/colorSecondary"
-    app:cardCornerRadius="8dp"
+    android:backgroundTint="#22000000"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
     app:contentPadding="8dp">
 
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tag_title"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="8dp"
-
-        android:drawableEnd="@drawable/baseline_close_24"
-        android:drawablePadding="16dp"
-        android:drawableTint="?attr/colorOnSecondary"
+        android:layout_gravity="center_vertical"
         android:gravity="center"
-        android:textAppearance="@style/Font.Button"
-        android:textColor="?attr/colorOnSecondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:drawableStart="@drawable/baseline_account_circle_24"
-        tools:text="Example text" />
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tag_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:textAppearance="@style/Font.Button"
+            android:textColor="?attr/colorOnSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Example text" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tag_button"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/baseline_close_24"
+            app:iconTint="?attr/colorPrimaryInverse" />
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
 

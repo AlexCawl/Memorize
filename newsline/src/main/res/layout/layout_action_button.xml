@@ -4,17 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
-    android:backgroundTint="?attr/colorSurface"
-    app:cardCornerRadius="8dp"
+    android:backgroundTint="#22000000"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
     app:contentPadding="8dp">
 
-    <ImageView
-        android:id="@+id/action_icon"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:contentDescription="@string/action"
-        app:tint="?attr/colorOnSurface"
-        tools:src="@drawable/baseline_add_24" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/action_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorPrimaryInverse"
+            tools:src="@drawable/baseline_close_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

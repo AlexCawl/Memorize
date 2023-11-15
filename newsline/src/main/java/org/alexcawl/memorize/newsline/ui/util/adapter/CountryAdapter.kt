@@ -16,6 +16,9 @@ object CountryAdapter : DelegateAdapter<Filter.Country, CountryAdapter.CountryVi
     ) : DelegateViewHolder<Filter.Country, LayoutTagBinding>(binding) {
         override fun onBind(model: Filter.Country) {
             binding.tagTitle.text = model.content
+            binding.root.setOnClickListener {
+
+            }
         }
     }
 

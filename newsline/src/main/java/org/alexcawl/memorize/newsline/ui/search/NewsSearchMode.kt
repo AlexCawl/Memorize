@@ -24,10 +24,10 @@ sealed interface NewsSearchMode : SearchMode {
             }.let { SearchMode.ActionIcon(it) }
 
         override fun iterator(): Iterator<Filter> {
-            return mutableListOf<Filter>(query).apply {
+            return mutableListOf<Filter>(actionIcon).apply {
+                add(query)
                 country?.let { add(country) }
                 category?.let { add(category) }
-                add(actionIcon)
             }.toList().iterator()
         }
     }

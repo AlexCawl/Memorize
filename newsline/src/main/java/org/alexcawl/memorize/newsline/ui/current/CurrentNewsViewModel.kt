@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.alexcawl.memorize.common.model.ArticleModel
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
-import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import org.alexcawl.memorize.newsline.ui.search.NewsSearchMode
 import java.util.UUID
 import javax.inject.Inject
@@ -22,11 +21,11 @@ class CurrentNewsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val articles: ArticleResponseDTO = source.getTopHeadlines("Israel")
+            val articles = source.getTopHeadlines("Israel")
             _state.emit(
                 CurrentNewsState.Successful(
                     NewsSearchMode.EmptyNewsSearchMode,
-                    articles.articles.map {
+                    articles.getOrNull()?.articles?.map {
                         ArticleModel(
                             UUID.randomUUID(),
                             it.title,
@@ -38,7 +37,7 @@ class CurrentNewsViewModel @Inject constructor(
                             it.content,
                             it.description
                         )
-                    }
+                    } ?: listOf()
                 )
             )
         }

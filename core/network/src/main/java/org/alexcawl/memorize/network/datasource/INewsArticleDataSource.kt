@@ -9,9 +9,9 @@ interface INewsArticleDataSource {
         query: String,
         country: CountryModel? = null,
         category: CategoryModel? = null
-    ): ArticleResponseDTO
+    ): Result<ArticleResponseDTO>
 
-    suspend fun getTopHeadlines(country: CountryModel): ArticleResponseDTO
+    suspend fun getTopHeadlines(country: CountryModel): Result<ArticleResponseDTO>
 
-    suspend fun getTopHeadlines(category: CategoryModel): ArticleResponseDTO
+    suspend fun getTopHeadlines(category: CategoryModel): Result<ArticleResponseDTO>
 }

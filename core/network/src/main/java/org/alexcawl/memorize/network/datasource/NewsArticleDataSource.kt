@@ -21,19 +21,21 @@ class NewsArticleDataSource @Inject constructor(
 
     override suspend fun getTopHeadlines(
         query: String, country: CountryModel?, category: CategoryModel?
-    ): ArticleResponseDTO = client.get {
-        header(NetworkConfiguration.API_HEADER_NAME, NetworkConfiguration.API_HEADER_VALUE)
-        url(NetworkConfiguration.TOP_HEADLINES_URL)
-        parameter("q", query)
-        country?.let { parameter(COUNTRY, country.toString().lowercase()) }
-        category?.let { parameter(CATEGORY, category.toString().lowercase()) }
+    ): Result<ArticleResponseDTO> = runCatching {
+        client.get {
+            header(NetworkConfiguration.API_HEADER_NAME, NetworkConfiguration.API_HEADER_VALUE)
+            url(NetworkConfiguration.TOP_HEADLINES_URL)
+            parameter("q", query)
+            country?.let { parameter(COUNTRY, country.toString().lowercase()) }
+            category?.let { parameter(CATEGORY, category.toString().lowercase()) }
+        }
     }
 
-    override suspend fun getTopHeadlines(country: CountryModel): ArticleResponseDTO {
+    override suspend fun getTopHeadlines(country: CountryModel): Result<ArticleResponseDTO> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getTopHeadlines(category: CategoryModel): ArticleResponseDTO {
+    override suspend fun getTopHeadlines(category: CategoryModel): Result<ArticleResponseDTO> {
         TODO("Not yet implemented")
     }
 }

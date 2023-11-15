@@ -1,6 +1,6 @@
 package org.alexcawl.memorize.network.mapper
 
-import org.alexcawl.memorize.common.OneWayMapper
+import org.alexcawl.memorize.common.util.OneWayMapper
 import org.alexcawl.memorize.common.model.ArticleModel
 import org.alexcawl.memorize.network.dto.article.ArticleDTO
 import java.util.UUID

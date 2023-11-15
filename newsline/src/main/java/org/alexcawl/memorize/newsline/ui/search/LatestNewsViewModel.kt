@@ -8,15 +8,16 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.alexcawl.memorize.common.model.CategoryModel
 import org.alexcawl.memorize.common.model.CountryModel
+import org.alexcawl.memorize.common.resolver.ICountryResolver
 import org.alexcawl.memorize.network.datasource.INewsArticleDataSource
-import org.alexcawl.memorize.network.dto.article.ArticleResponseDTO
 import org.alexcawl.memorize.network.mapper.ArticleMapper
 import org.alexcawl.memorize.newsline.domain.Filter
 import org.alexcawl.memorize.ui.StateHolder
 import javax.inject.Inject
 
 class LatestNewsViewModel @Inject constructor(
-    private val source: INewsArticleDataSource
+    private val source: INewsArticleDataSource,
+    private val countryResolver: ICountryResolver
 ) : StateHolder<LatestNewsState, LatestNewsAction>() {
     private val _state: MutableStateFlow<LatestNewsState> =
         MutableStateFlow(LatestNewsState.Initial)
@@ -24,11 +25,15 @@ class LatestNewsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val articles: ArticleResponseDTO = source.getTopHeadlines("Israel")
+            val articles = source.getTopHeadlines("Israel")
             _state.emit(
                 LatestNewsState.Successful(
-                    NewsSearchMode.TagNewsSearchMode(Filter.Query("Israel"), Filter.Country(CountryModel.RU), Filter.Category(CategoryModel.GENERAL)),
-                    articles.articles.map(ArticleMapper::map)
+                    NewsSearchMode.TagNewsSearchMode(
+                        Filter.Query("Israel"),
+                        Filter.Country(CountryModel.RU, countryResolver.map(CountryModel.RU)),
+                        Filter.Category(CategoryModel.GENERAL)
+                    ),
+                    articles.getOrNull()?.articles?.map(ArticleMapper::map) ?: listOf()
                 )
             )
         }
